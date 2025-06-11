@@ -65,19 +65,24 @@ const hijriMonths = [
 
 function toHijri(hijriDay) {
   const today = new Date();
+  let hijriDate = "";
+  try {
+    const hijriFormatter = new Intl.DateTimeFormat("en-u-ca-islamic", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
 
-  const hijriFormatter = new Intl.DateTimeFormat("en-TN-u-ca-islamic", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+    const parts = hijriFormatter.formatToParts(today);
 
-  const parts = hijriFormatter.formatToParts(today);
+    const hijriMonth = parts.find((p) => p.type === "month")?.value;
+    const hijriYear = parts.find((p) => p.type === "year")?.value;
 
-  const hijriMonth = parts.find((p) => p.type === "month")?.value;
-  const hijriYear = parts.find((p) => p.type === "year")?.value;
-
-  return `${hijriMonth} ${hijriDay}, ${hijriYear} AH`;
+    hijriDate = `${hijriMonth} ${hijriDay}, ${hijriYear} AH`;
+  } catch (e) {
+    alert("Hijri dates are not supported");
+  }
+  return hijriDate;
 }
 
 function getHijriParts(gDate) {
