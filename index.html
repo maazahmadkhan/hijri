@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hijri Calendar</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Hijri Date Today</h1>
+      <p id="today"></p>
+      <div>
+        <button id="moonSightingBtn">Set Last moon sighting</button>
+      </div>
+      <button id="fullMonthBtn">View Full Month</button>
+      <div id="monthView" class="hidden"></div>
+    </div>
+    <dialog id="myDialog">
+      <div>
+        <div>Did you see the moon tonight?</div>
+        <input type="checkbox" id="myCheckbox" />
+      </div>
+      <p>When was the last moon sighting?</p>
+      <label for="datePicker">Choose a date:</label>
+      <input type="date" id="datePicker" name="datePicker" />
+
+      <button id="dateSubmit">ok</button>
+    </dialog>
+    <script src="script.js"></script>
+  </body>
+</html>
